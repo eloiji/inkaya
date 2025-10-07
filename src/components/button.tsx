@@ -36,11 +36,8 @@ export default function Button(props: ButtonProps) {
   }
 
   // 3. Variant Classes: Determines colors and hover effects
-  let variantClasses: string = 'bg-cyan-600 text-white hover:bg-cyan-700 focus:ring-cyan-500'; // Default to primary
+  let variantClasses: string = '';
   switch (variant) {
-    case 'primary':
-      variantClasses = 'bg-cyan-600 text-white hover:bg-cyan-700 focus:ring-cyan-500';
-      break;
     case 'secondary':
       variantClasses = 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400';
       break;
@@ -50,14 +47,13 @@ export default function Button(props: ButtonProps) {
     case 'ghost':
       variantClasses = 'bg-transparent text-cyan-600 hover:bg-cyan-100 focus:ring-cyan-500 border border-cyan-600';
       break;
+    default:
+      variantClasses = 'bg-cyan-600 text-white hover:bg-cyan-700 focus:ring-cyan-500'; // Fallback to primary
+      break;
   }
 
   // 4. Combine all classes
   const finalClasses: string = `${baseClasses} ${sizeClasses} ${variantClasses}`;
-  
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    // @todo: e.preventDefault();
-  };
 
-  return <button {...rest} className={finalClasses} onClick={handleClick}>{children}</button>;
+  return <button {...rest} className={finalClasses}>{children}</button>;
 }
