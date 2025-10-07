@@ -45,23 +45,28 @@ export default function Button(props: ButtonProps) {
   }
 
   // 3. Variant Classes: Determines colors and hover effects
-  const primaryButtonClasses = 'bg-cyan-600 text-white hover:bg-cyan-700 focus:ring-cyan-500';
+  const buttonClasses: Record<ButtonVariant, string> = {
+    primary: 'bg-cyan-600 text-white hover:bg-cyan-700 focus:ring-cyan-500',
+    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400',
+    danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
+    ghost: 'bg-transparent text-cyan-600 hover:bg-cyan-100 focus:ring-cyan-500 border border-cyan-600',
+  };
   let variantClasses: string = '';
   switch (variant) {
     case 'primary':
-      variantClasses = primaryButtonClasses;
+      variantClasses = buttonClasses.primary;
       break;
     case 'secondary':
-      variantClasses = 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400';
+      variantClasses = buttonClasses.secondary;
       break;
     case 'danger':
-      variantClasses = 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500';
+      variantClasses = buttonClasses.danger;
       break;
     case 'ghost':
-      variantClasses = 'bg-transparent text-cyan-600 hover:bg-cyan-100 focus:ring-cyan-500 border border-cyan-600';
+      variantClasses = buttonClasses.ghost;
       break;
     default:
-      variantClasses = primaryButtonClasses;
+      variantClasses = buttonClasses.primary; // Default to primary if no variant specified
       break;
   }
 
