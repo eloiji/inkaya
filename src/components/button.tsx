@@ -56,8 +56,7 @@ export default function Button(props: ButtonProps) {
   const finalClasses: string = `${baseClasses} ${sizeClasses} ${variantClasses}`;
   
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    console.log("Button clicked!", e.target);
+    // @todo: e.preventDefault();
   };
 
   return <button {...rest} className={finalClasses} onClick={handleClick}>{children}</button>;
