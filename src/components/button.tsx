@@ -15,10 +15,19 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export default function Button(props: ButtonProps) {
     const { children, size, variant, ...rest } = props;
     // 1. Base Classes: Applied to all buttons for universal styling
-  const baseClasses: string =
-    'font-semibold rounded-lg transition duration-150 ease-in-out ' +
-    'focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ' +
-    'cursor-pointer';
+  const baseClasses: string = [
+    'font-semibold',
+    'rounded-lg',
+    'transition',
+    'duration-150',
+    'ease-in-out',
+    'focus:outline-none',
+    'focus:ring-2',
+    'focus:ring-offset-2',
+    'disabled:opacity-50',
+    'disabled:cursor-not-allowed',
+    'cursor-pointer'
+  ].join(' ');
 
   // 2. Size Classes: Determines padding and text size
   let sizeClasses: string = '';
