@@ -38,6 +38,9 @@ export default function Button(props: ButtonProps) {
   // 3. Variant Classes: Determines colors and hover effects
   let variantClasses: string = '';
   switch (variant) {
+    case 'primary':
+      variantClasses = 'bg-cyan-600 text-white hover:bg-cyan-700 focus:ring-cyan-500';
+      break;
     case 'secondary':
       variantClasses = 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400';
       break;
