@@ -18,7 +18,7 @@ export default function Navbar(props: NavbarProps) {
 
   return (
     <nav className={props.className}>
-      <ul role="list" className="flex">
+      <ul className="flex">
         {links.map((link) => (
           <li key={link.href} className="ml-4">
             <Link href={link.href} className="text-gray-900">
