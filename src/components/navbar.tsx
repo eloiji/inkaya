@@ -2,26 +2,16 @@ import Link from "next/link";
 
 interface NavbarProps {
   className?: string;
-  links?: { href: string; label: string }[];
+  links: { href: string; label: string }[];
 }
 
 export default function Navbar(props: NavbarProps) {
-  const defaultLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-    { href: "/login", label: "Login" },
-    { href: "/register", label: "Register" },
-  ];
-
-  const links = props.links || defaultLinks;
-
   return (
     <nav className={props.className}>
       <ul className="flex">
-        {links.map((link) => (
-          <li key={`${link.href}-${link.label}`} className="ml-4 first:ml-0">
-            <Link href={link.href} className="text-gray-900">
+        {props.links.map((link) => (
+          <li key={`${link.href}-${link.label}`} className="ml-4 xs:ml-2 first:ml-0">
+            <Link href={link.href} className="font-bold text-gray-900 hover:text-cyan-900 transition-colors">
               {link.label}
             </Link>
           </li>

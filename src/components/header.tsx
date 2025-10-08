@@ -1,12 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "./navbar";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
-interface HeaderProps {
-  // Add props here if needed in the future
-}
-
-export default function Header(props: HeaderProps = {}) {
+export default function Header() {
+  const isMobile = useMediaQuery(640); // 640px corresponds to 'sm' breakpoint in Tailwind CSS
+  // Default navigation and authentication links
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+  ];
+  const authLinks = [
+    { href: "/login", label: "Login" },
+    { href: "/signup", label: "Sign Up" },
+  ];
+  const links = isMobile ? authLinks : [...navLinks, ...authLinks];
   return (
     <header className="bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,7 +25,7 @@ export default function Header(props: HeaderProps = {}) {
           <div className="flex items-center">
             <Link 
               href="/" 
-              className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+              className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-1 focus:ring-blue-300 focus:ring-offset-1 rounded"
               aria-label="Go to homepage"
             >
               <Image
@@ -26,7 +37,7 @@ export default function Header(props: HeaderProps = {}) {
               />
             </Link>
           </div>
-          <Navbar className="flex items-center" />
+          <Navbar className="flex items-center" links={links} />
         </div>
       </div>
     </header>
