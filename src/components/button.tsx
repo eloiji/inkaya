@@ -14,7 +14,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Button(props: ButtonProps) {
   const { children, size, variant, ...rest } = props;
-  // 1. Base Classes: Applied to all buttons for universal styling
+  // Base Classes: Applied to all buttons for universal styling
   const baseClasses: string = [
     'font-semibold',
     'rounded-lg',
@@ -29,7 +29,7 @@ export default function Button(props: ButtonProps) {
     'cursor-pointer'
   ].join(' ');
 
-  // 2. Size Classes: Determines padding and text size
+  // Size Classes: Determines padding and text size
   let sizeClasses: string = '';
   switch (size) {
     case 'sm':
@@ -44,7 +44,7 @@ export default function Button(props: ButtonProps) {
       break;
   }
 
-  // 3. Variant Classes: Determines colors and hover effects
+  // Variant Classes: Determines colors and hover effects
   const buttonClasses: Record<ButtonVariant, string> = {
     primary: 'bg-cyan-600 text-white hover:bg-cyan-700 focus:ring-cyan-500',
     secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400',
@@ -70,7 +70,7 @@ export default function Button(props: ButtonProps) {
       break;
   }
 
-  // 4. Combine all classes
+  // Combine all classes
   const finalClasses: string = `${baseClasses} ${sizeClasses} ${variantClasses}`;
 
   return <button {...rest} className={finalClasses}>{children}</button>;
