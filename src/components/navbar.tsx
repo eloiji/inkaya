@@ -20,7 +20,7 @@ export default function Navbar(props: NavbarProps) {
     <nav className={props.className}>
       <ul className="flex">
         {links.map((link) => (
-          <li key={link.href} className="ml-4">
+          <li key={link.href} className="ml-4 first:ml-0">
             <Link href={link.href} className="text-gray-900">
               {link.label}
             </Link>
