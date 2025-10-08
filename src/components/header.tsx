@@ -20,7 +20,7 @@ export default function Header(props?: HeaderProps) {
               <Image
                 src="/images/logo.png"
                 alt="Inkaya Logo"
-                width={64}
+                width={100}
                 height={32}
                 priority
               />
