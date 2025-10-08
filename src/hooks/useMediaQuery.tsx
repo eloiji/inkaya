@@ -13,7 +13,7 @@ export const useMediaQuery = (query: number) => {
 
       return () => media.removeEventListener('change', listener);
     }
-  }, [query]); console.log(matches);
+  }, [query]);
 
   return matches;
 };
