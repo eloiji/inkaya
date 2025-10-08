@@ -18,11 +18,15 @@ export default function Navbar(props: NavbarProps) {
 
   return (
     <nav className={props.className}>
-      {links.map((link) => (
-        <Link key={link.href} href={link.href} className="ml-4 text-gray-900">
-          {link.label}
-        </Link>
-      ))}
+      <ul role="list" className="flex">
+        {links.map((link) => (
+          <li key={link.href} className="ml-4">
+            <Link href={link.href} className="text-gray-900">
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 }
