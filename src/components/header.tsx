@@ -5,8 +5,10 @@ import Link from "next/link";
 import Navbar from "./navbar";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 
+const SM_BREAKPOINT = 640; // 'sm' breakpoint in Tailwind CSS
+
 export default function Header() {
-  const isMobile = useMediaQuery(640); // 640px corresponds to 'sm' breakpoint in Tailwind CSS
+  const isMobile = useMediaQuery(SM_BREAKPOINT);
   // Default navigation and authentication links
   const navLinks = [
     { href: "/", label: "Home" },

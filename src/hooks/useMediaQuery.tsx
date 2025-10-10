@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export const useMediaQuery = (query: number) => {
-  const [matches, setMatches] = useState(true); // Default to true for mobile-first approach
+  const [matches, setMatches] = useState(false); // Default to false to avoid SSR hydration mismatch
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.matchMedia) {
