@@ -1,11 +1,11 @@
-import { renderHook, waitFor } from '@testing-library/react';
+import { renderHook, waitFor, act } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { useMediaQuery } from './useMediaQuery';
 
 interface MockMediaQueryList {
   matches: boolean;
   media: string;
-  onchange: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null;
+  onchange: ((this: MediaQueryList, ev: MediaQueryListEvent) => void) | null;
   addListener: (listener: (ev: MediaQueryListEvent) => void) => void;
   removeListener: (listener: (ev: MediaQueryListEvent) => void) => void;
   addEventListener: (event: string, listener: () => void) => void;
@@ -119,8 +119,10 @@ describe('useMediaQuery', () => {
       });
 
       // Simulate window resize that changes the media query match
-      matchesValue = true;
-      listeners.forEach(listener => listener());
+      act(() => {
+        matchesValue = true;
+        listeners.forEach(listener => listener());
+      });
 
       await waitFor(() => {
         expect(result.current).toBe(true);
@@ -401,14 +403,20 @@ describe('useMediaQuery', () => {
       const { result } = renderHook(() => useMediaQuery(640));
 
       // Trigger multiple rapid changes
-      matchesValue = true;
-      listeners.forEach(listener => listener());
+      act(() => {
+        matchesValue = true;
+        listeners.forEach(listener => listener());
+      });
 
-      matchesValue = false;
-      listeners.forEach(listener => listener());
+      act(() => {
+        matchesValue = false;
+        listeners.forEach(listener => listener());
+      });
 
-      matchesValue = true;
-      listeners.forEach(listener => listener());
+      act(() => {
+        matchesValue = true;
+        listeners.forEach(listener => listener());
+      });
 
       await waitFor(() => {
         expect(result.current).toBe(true);
