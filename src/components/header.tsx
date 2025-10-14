@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "./navbar";
+import SideMenu from "./sideMenu";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 
 const SM_BREAKPOINT = 640; // 'sm' breakpoint in Tailwind CSS
@@ -21,10 +22,10 @@ export default function Header() {
   ];
   const links = isMobile ? authLinks : [...navLinks, ...authLinks];
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-white shadow-sm z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
+          <div className="flex-1">
             <Link 
               href="/" 
               className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-1 focus:ring-blue-300 focus:ring-offset-1 rounded"
@@ -39,7 +40,8 @@ export default function Header() {
               />
             </Link>
           </div>
-          <Navbar className="flex items-center" links={links} />
+          <Navbar direction="row" links={links} />
+          {isMobile && (<SideMenu links={navLinks} />)}
         </div>
       </div>
     </header>
