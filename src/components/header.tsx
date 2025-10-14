@@ -32,7 +32,7 @@ export default function Header() {
               aria-label="Go to homepage"
             >
               <Image
-                src="/images/logo.png"
+                src="/images/logo.svg"
                 alt="Inkaya Logo"
                 width={100}
                 height={32}
@@ -41,7 +41,9 @@ export default function Header() {
             </Link>
           </div>
           <Navbar direction="row" links={links} />
-          {isMobile && (<SideMenu links={navLinks} />)}
+          <div className="block md:hidden">
+            <SideMenu links={navLinks} />
+          </div>
         </div>
       </div>
     </header>
