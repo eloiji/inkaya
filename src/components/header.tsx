@@ -36,8 +36,6 @@ export default function Header() {
                 alt="Inkaya Logo"
                 width={100}
                 height={32}
-                placeholder="blur"
-                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMzIiIGZpbGw9IiNlMWUxZTEiLz48L3N2Zz4="
                 priority
               />
             </Link>
