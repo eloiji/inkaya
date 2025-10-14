@@ -40,10 +40,8 @@ export default function Header() {
               />
             </Link>
           </div>
-          <Navbar className="flex" links={links} />
-          {isMobile && (
-            <SideMenu isMobile={isMobile} />
-          )}
+          <Navbar direction="row" links={links} />
+          {isMobile && (<SideMenu links={navLinks} />)}
         </div>
       </div>
     </header>

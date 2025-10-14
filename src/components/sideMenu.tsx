@@ -1,32 +1,35 @@
 import { useState } from "react";
 import Button from "./button";
 import { MenuIcon, CloseIcon } from "./icons";
-import Link from "next/link";
+import Navbar from "./navbar";
 
 interface SideMenuProps {
-  isMobile: boolean;
+  links?: { href: string; label: string }[];
 }
 
-export default function SideMenu({ isMobile }: SideMenuProps) {
+export default function SideMenu({ links }: SideMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const menuItemClass = "block py-2 pr-6 text-gray-800 text-right";
+  const baseMenuClass = "fixed top-0 right-0 h-full w-48 bg-white p-4 font-bold shadow-lg";
+  const menuAnimationClass = "transform transition-transform duration-300 ease-in-out";
 
   return (
     <>
-      <Button variant="icon" onClick={toggleMenu} className="ml-2">
-        {!isMobile ? null : <MenuIcon />}
+      <Button variant="icon" onClick={toggleMenu} className="ml-2" role="button" aria-label="Toggle menu">
+        <MenuIcon />
       </Button>
       {/* a side menu that opens from the right side , aligning contents to the right */}
-      <aside className={`fixed top-0 right-0 h-full w-48 bg-white p-4 font-bold shadow-lg transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <aside 
+        className={`${baseMenuClass} ${menuAnimationClass} ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        role="menu"
+        aria-label="Side menu"
+      >
         <div className="flex justify-end pt-2 pb-4">
-          <Button variant="icon" onClick={toggleMenu}>
+          <Button variant="icon" onClick={toggleMenu} role="button" aria-label="Close menu">
             <CloseIcon />
           </Button>
         </div>
-        <Link href="/" className={menuItemClass}>Home</Link>
-        <Link href="/about" className={menuItemClass}>About</Link>
-        <Link href="/contact" className={menuItemClass}>Contact</Link>
+        <Navbar direction="col" links={links || []} />
       </aside>
     </>
   );
