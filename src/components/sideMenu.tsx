@@ -21,7 +21,7 @@ export default function SideMenu({ links }: SideMenuProps) {
       {/* a side menu that opens from the right side , aligning contents to the right */}
       <aside 
         className={`${baseMenuClass} ${menuAnimationClass} ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
-        role="menu"
+        role="navigation"
         aria-label="Side menu"
       >
         <div className="flex justify-end pt-2 pb-4">
