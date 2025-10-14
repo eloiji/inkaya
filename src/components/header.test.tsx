@@ -6,8 +6,21 @@ import * as useMediaQueryModule from '../hooks/useMediaQuery';
 // Mock Next.js Image component
 vi.mock('next/image', () => ({
   default: (props: any) => {
-    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-    return <img {...props} />;
+    // Enforce required props for accessibility
+    const { src, alt, width, height, ...rest } = props;
+    if (typeof alt !== 'string' || alt.trim() === '') {
+      throw new Error('Mocked Next.js Image requires a non-empty alt prop for accessibility.');
+    }
+    // Provide default width/height if not specified, to mimic Next.js behavior
+    return (
+      <img
+        src={src}
+        alt={alt}
+        width={width || 100}
+        height={height || 100}
+        {...rest}
+      />
+    );
   },
 }));
 

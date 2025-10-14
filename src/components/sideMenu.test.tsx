@@ -9,10 +9,6 @@ describe('SideMenu', () => {
     { href: '/signup', label: 'Sign Up' },
   ];
 
-  beforeEach(() => {
-    // Clear any previous renders
-  });
-
   describe('Rendering', () => {
     it('renders without crashing', () => {
       render(<SideMenu links={mockLinks} />);
