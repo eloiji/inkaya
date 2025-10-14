@@ -22,7 +22,7 @@ export default function Navbar(props: NavbarProps) {
       <ul className={`flex ${listClass}`}>
         {links.map((link) => (
           <li key={`${link.href}-${link.label}`} className={listItemClass}>
-            <Link href={link.href} className={linkClass} role="menuitem" aria-label={link.label} tabIndex={0}>
+            <Link href={link.href} className={linkClass} aria-label={link.label} tabIndex={0}>
               {link.label}
             </Link>
           </li>
