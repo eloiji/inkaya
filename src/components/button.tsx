@@ -27,12 +27,7 @@ export default function Button(props: ButtonProps) {
   ].join(' ');
 
   // Base Classes: Applied to all buttons for universal styling
-  const baseClasses: string = [
-    ...iconBaseClasses,
-    'focus:outline-none',
-    'focus:ring-2',
-    'focus:ring-offset-2',
-  ].join(' ');
+  const baseClasses: string = `${iconBaseClasses} focus:outline-none focus:ring-2 focus:ring-offset-2`;
 
   // Size Classes: Determines padding and text size
   let sizeClasses: string = '';
