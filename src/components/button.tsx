@@ -42,7 +42,7 @@ export default function Button(props: ButtonProps) {
       sizeClasses = 'px-4 py-2 text-base';
       break;
     default:
-      sizeClasses = 'ml-2 py-1'; // Default for icon buttons
+      sizeClasses = ''; // Default to no size classes if none specified
       break;
   }
 
@@ -52,7 +52,7 @@ export default function Button(props: ButtonProps) {
     secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400',
     danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
     ghost: 'bg-transparent text-cyan-600 hover:bg-cyan-100 focus:ring-cyan-500 border border-cyan-600',
-    icon: 'bg-transparent text-cyan-900',
+    icon: 'bg-transparent text-gray-900 py-1',
   };
   let variantClasses: string = '';
   switch (variant) {

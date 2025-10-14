@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "./navbar";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import SideMenu from "./sideMenu";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 const SM_BREAKPOINT = 640; // 'sm' breakpoint in Tailwind CSS
 
