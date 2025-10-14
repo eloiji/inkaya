@@ -298,7 +298,7 @@ describe('useMediaQuery', () => {
       const originalMatchMedia = window.matchMedia;
       
       // Temporarily remove matchMedia using TypeScript casting
-      (window as any).matchMedia = undefined;
+      (window as { matchMedia?: typeof window.matchMedia }).matchMedia = undefined;
 
       const { result } = renderHook(() => useMediaQuery(640));
       expect(result.current).toBe(false);
