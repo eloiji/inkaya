@@ -25,7 +25,7 @@ vi.mock('next/image', () => ({
 }));
 
 describe('Header', () => {
-  let mockUseMediaQuery: ReturnType<typeof vi.fn>;
+  let mockUseMediaQuery: vi.MockedFunction<typeof useMediaQueryModule.useMediaQuery>;
 
   beforeEach(() => {
     mockUseMediaQuery = vi.fn();

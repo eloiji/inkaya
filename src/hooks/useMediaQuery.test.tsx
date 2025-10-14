@@ -2,8 +2,18 @@ import { renderHook, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { useMediaQuery } from './useMediaQuery';
 
+interface MockMediaQueryList {
+  matches: boolean;
+  media: string;
+  onchange: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null;
+  addListener: (listener: (ev: MediaQueryListEvent) => void) => void;
+  removeListener: (listener: (ev: MediaQueryListEvent) => void) => void;
+  addEventListener: (event: string, listener: () => void) => void;
+  removeEventListener: (event: string, listener: () => void) => void;
+  dispatchEvent: (event: Event) => boolean;
+}
 describe('useMediaQuery', () => {
-  let matchMediaMock: any;
+  let matchMediaMock: vi.Mock<MockMediaQueryList, [string]>;
   let listeners: Array<() => void> = [];
 
   beforeEach(() => {
