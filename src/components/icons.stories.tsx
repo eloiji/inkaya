@@ -11,23 +11,7 @@ const meta = {
 
 export default meta;
 
-// CloseIcon Stories
-const CloseIconMeta = {
-  title: 'Components/Icons/CloseIcon',
-  component: CloseIcon,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    className: {
-      control: 'text',
-      description: 'Additional CSS classes to apply to the icon',
-    },
-  },
-} satisfies Meta<typeof CloseIcon>;
-
-type CloseIconStory = StoryObj<typeof CloseIconMeta>;
+type CloseIconStory = StoryObj<Meta<typeof CloseIcon>>;
 
 export const Close: CloseIconStory = {
   render: (args) => <CloseIcon {...args} />,
@@ -48,23 +32,7 @@ export const CloseLarge: CloseIconStory = {
   },
 };
 
-// MenuIcon Stories
-const MenuIconMeta = {
-  title: 'Components/Icons/MenuIcon',
-  component: MenuIcon,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    className: {
-      control: 'text',
-      description: 'Additional CSS classes to apply to the icon',
-    },
-  },
-} satisfies Meta<typeof MenuIcon>;
-
-type MenuIconStory = StoryObj<typeof MenuIconMeta>;
+type MenuIconStory = StoryObj<Meta<typeof MenuIcon>>;
 
 export const Menu: MenuIconStory = {
   render: (args) => <MenuIcon {...args} />,
