@@ -10,10 +10,12 @@ describe('Icons', () => {
       expect(svg).toBeInTheDocument();
     });
 
-    it('applies custom className', () => {
+    it('applies custom className while preserving default classes', () => {
       const { container } = render(<CloseIcon className="custom-class" />);
       const svg = container.querySelector('svg');
       expect(svg).toHaveClass('custom-class');
+      expect(svg).toHaveClass('w-6');
+      expect(svg).toHaveClass('h-6');
     });
 
     it('passes through data-testid prop', () => {
@@ -26,6 +28,24 @@ describe('Icons', () => {
       const path = container.querySelector('path');
       expect(path).toHaveAttribute('d', 'M6 18L18 6M6 6l12 12');
     });
+
+    it('applies custom color class', () => {
+      const { container } = render(<CloseIcon className="text-red-600" />);
+      const svg = container.querySelector('svg');
+      expect(svg).toHaveClass('text-red-600');
+      expect(svg).toHaveClass('w-6');
+      expect(svg).toHaveClass('h-6');
+    });
+
+    it('applies custom size class while preserving default', () => {
+      const { container } = render(<CloseIcon className="w-12 h-12" />);
+      const svg = container.querySelector('svg');
+      expect(svg).toHaveClass('w-12');
+      expect(svg).toHaveClass('h-12');
+      // Default classes are still present (Tailwind will use the last matching utility)
+      expect(svg).toHaveClass('w-6');
+      expect(svg).toHaveClass('h-6');
+    });
   });
 
   describe('MenuIcon', () => {
@@ -35,10 +55,12 @@ describe('Icons', () => {
       expect(svg).toBeInTheDocument();
     });
 
-    it('applies custom className', () => {
+    it('applies custom className while preserving default classes', () => {
       const { container } = render(<MenuIcon className="custom-class" />);
       const svg = container.querySelector('svg');
       expect(svg).toHaveClass('custom-class');
+      expect(svg).toHaveClass('w-6');
+      expect(svg).toHaveClass('h-6');
     });
 
     it('passes through data-testid prop', () => {
@@ -50,6 +72,24 @@ describe('Icons', () => {
       const { container } = render(<MenuIcon />);
       const path = container.querySelector('path');
       expect(path).toHaveAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+    });
+
+    it('applies custom color class', () => {
+      const { container } = render(<MenuIcon className="text-cyan-600" />);
+      const svg = container.querySelector('svg');
+      expect(svg).toHaveClass('text-cyan-600');
+      expect(svg).toHaveClass('w-6');
+      expect(svg).toHaveClass('h-6');
+    });
+
+    it('applies custom size class while preserving default', () => {
+      const { container } = render(<MenuIcon className="w-12 h-12" />);
+      const svg = container.querySelector('svg');
+      expect(svg).toHaveClass('w-12');
+      expect(svg).toHaveClass('h-12');
+      // Default classes are still present (Tailwind will use the last matching utility)
+      expect(svg).toHaveClass('w-6');
+      expect(svg).toHaveClass('h-6');
     });
   });
 });
