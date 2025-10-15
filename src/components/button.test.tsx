@@ -172,12 +172,25 @@ describe('Button', () => {
   });
 
   describe('Custom Props', () => {
-    it('passes through custom className via rest props', () => {
+    it('custom className completely overrides default classes', () => {
       render(<Button className="custom-class">Custom</Button>);
       const button = screen.getByRole('button');
-      // Note: The component doesn't merge classNames, it replaces them
-      // This test verifies the actual behavior
-      expect(button.className).toBeTruthy();
+      // Custom className should completely replace default classes
+      expect(button.className).toBe('custom-class');
+      // Should not have default classes
+      expect(button).not.toHaveClass('bg-cyan-600');
+      expect(button).not.toHaveClass('font-semibold');
+    });
+
+    it('custom className with size utilities works without conflicts', () => {
+      render(<Button className="w-12 h-12 bg-blue-500">Custom Size</Button>);
+      const button = screen.getByRole('button');
+      // Should only have custom classes
+      expect(button.className).toBe('w-12 h-12 bg-blue-500');
+      // Should not have conflicting default size classes
+      expect(button).not.toHaveClass('px-4');
+      expect(button).not.toHaveClass('py-2');
+      expect(button).not.toHaveClass('bg-cyan-600');
     });
 
     it('passes through data attributes', () => {

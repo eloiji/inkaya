@@ -10,10 +10,18 @@ describe('Icons', () => {
       expect(svg).toBeInTheDocument();
     });
 
-    it('applies custom className while preserving default classes', () => {
+    it('custom className completely overrides default classes', () => {
       const { container } = render(<CloseIcon className="custom-class" />);
       const svg = container.querySelector('svg');
       expect(svg).toHaveClass('custom-class');
+      // Should not have default classes when custom className is provided
+      expect(svg).not.toHaveClass('w-6');
+      expect(svg).not.toHaveClass('h-6');
+    });
+
+    it('applies default classes when no custom className provided', () => {
+      const { container } = render(<CloseIcon />);
+      const svg = container.querySelector('svg');
       expect(svg).toHaveClass('w-6');
       expect(svg).toHaveClass('h-6');
     });
@@ -29,22 +37,23 @@ describe('Icons', () => {
       expect(path).toHaveAttribute('d', 'M6 18L18 6M6 6l12 12');
     });
 
-    it('applies custom color class', () => {
+    it('custom color class overrides all defaults', () => {
       const { container } = render(<CloseIcon className="text-red-600" />);
       const svg = container.querySelector('svg');
       expect(svg).toHaveClass('text-red-600');
-      expect(svg).toHaveClass('w-6');
-      expect(svg).toHaveClass('h-6');
+      // When custom className is provided, defaults should not be present
+      expect(svg).not.toHaveClass('w-6');
+      expect(svg).not.toHaveClass('h-6');
     });
 
-    it('applies custom size class while preserving default', () => {
+    it('custom size classes override defaults without conflicts', () => {
       const { container } = render(<CloseIcon className="w-12 h-12" />);
       const svg = container.querySelector('svg');
       expect(svg).toHaveClass('w-12');
       expect(svg).toHaveClass('h-12');
-      // Default classes are still present (Tailwind will use the last matching utility)
-      expect(svg).toHaveClass('w-6');
-      expect(svg).toHaveClass('h-6');
+      // Default classes should not be present when custom className is provided
+      expect(svg).not.toHaveClass('w-6');
+      expect(svg).not.toHaveClass('h-6');
     });
   });
 
@@ -55,10 +64,18 @@ describe('Icons', () => {
       expect(svg).toBeInTheDocument();
     });
 
-    it('applies custom className while preserving default classes', () => {
+    it('custom className completely overrides default classes', () => {
       const { container } = render(<MenuIcon className="custom-class" />);
       const svg = container.querySelector('svg');
       expect(svg).toHaveClass('custom-class');
+      // Should not have default classes when custom className is provided
+      expect(svg).not.toHaveClass('w-6');
+      expect(svg).not.toHaveClass('h-6');
+    });
+
+    it('applies default classes when no custom className provided', () => {
+      const { container } = render(<MenuIcon />);
+      const svg = container.querySelector('svg');
       expect(svg).toHaveClass('w-6');
       expect(svg).toHaveClass('h-6');
     });
@@ -74,22 +91,23 @@ describe('Icons', () => {
       expect(path).toHaveAttribute('d', 'M4 6h16M4 12h16M4 18h16');
     });
 
-    it('applies custom color class', () => {
+    it('custom color class overrides all defaults', () => {
       const { container } = render(<MenuIcon className="text-cyan-600" />);
       const svg = container.querySelector('svg');
       expect(svg).toHaveClass('text-cyan-600');
-      expect(svg).toHaveClass('w-6');
-      expect(svg).toHaveClass('h-6');
+      // When custom className is provided, defaults should not be present
+      expect(svg).not.toHaveClass('w-6');
+      expect(svg).not.toHaveClass('h-6');
     });
 
-    it('applies custom size class while preserving default', () => {
+    it('custom size classes override defaults without conflicts', () => {
       const { container } = render(<MenuIcon className="w-12 h-12" />);
       const svg = container.querySelector('svg');
       expect(svg).toHaveClass('w-12');
       expect(svg).toHaveClass('h-12');
-      // Default classes are still present (Tailwind will use the last matching utility)
-      expect(svg).toHaveClass('w-6');
-      expect(svg).toHaveClass('h-6');
+      // Default classes should not be present when custom className is provided
+      expect(svg).not.toHaveClass('w-6');
+      expect(svg).not.toHaveClass('h-6');
     });
   });
 });

@@ -41,7 +41,7 @@ export default function Header() {
             </Link>
           </div>
           <Navbar direction="row" links={links} />
-          <div className="block md:hidden">
+          <div className="block md:hidden ml-2">
             <SideMenu links={navLinks} />
           </div>
         </div>

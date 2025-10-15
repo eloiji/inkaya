@@ -6,7 +6,7 @@ export const CloseIcon: React.FC<IconProps> = (props) => {
   const { className, ...restProps } = props;
   return (
     <svg 
-      className={`w-6 h-6 ${className || ''}`}
+      className={className || 'w-6 h-6'}
       fill="none" 
       stroke="currentColor" 
       viewBox="0 0 24 24" 
@@ -21,7 +21,7 @@ export const MenuIcon: React.FC<IconProps> = (props) => {
   const { className, ...restProps } = props;
   return (
     <svg 
-      className={`w-6 h-6 ${className || ''}`}
+      className={className || 'w-6 h-6'}
       fill="none" 
       stroke="currentColor" 
       viewBox="0 0 24 24" 
