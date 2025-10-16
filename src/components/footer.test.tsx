@@ -39,7 +39,7 @@ describe('Footer', () => {
 
     it('renders company description', () => {
       render(<Footer />);
-      expect(screen.getByText(/Building innovative solutions/i)).toBeInTheDocument();
+      expect(screen.getByText(/Durable, high-quality vinyl stickers/i)).toBeInTheDocument();
     });
   });
 
