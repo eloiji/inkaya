@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { CloseIcon, MenuIcon } from './icons';
+import { CloseIcon, MenuIcon, SocialIcon } from './icons';
 
 describe('Icons', () => {
   describe('CloseIcon', () => {
@@ -108,6 +108,48 @@ describe('Icons', () => {
       // Default size classes are correctly overridden by tailwind-merge
       expect(svg).not.toHaveClass('w-6');
       expect(svg).not.toHaveClass('h-6');
+    });
+  });
+
+  describe('SocialIcon', () => {
+    const iconPath =
+      'M10 20v-6h4v6m5 0h-14a2 2 0 01-2-2V7a2 2 0 012-2h3.17a2 2 0 011.41.59l1.83 1.83a2 2 0 001.41.59H19a2 2 0 012 2v9a2 2 0 01-2 2z';
+
+    it('renders without crashing', () => {
+      const { container } = render(<SocialIcon icon={iconPath} />);
+      const svg = container.querySelector('svg');
+      expect(svg).toBeInTheDocument();
+    });
+
+    it('applies default classes', () => {
+      const { container } = render(<SocialIcon icon={iconPath} />);
+      const svg = container.querySelector('svg');
+      expect(svg).toHaveClass('w-6');
+      expect(svg).toHaveClass('h-6');
+    });
+
+    it('merges custom className with defaults', () => {
+      const { container } = render(<SocialIcon icon={iconPath} className="text-blue-500" />);
+      const svg = container.querySelector('svg');
+      expect(svg).toHaveClass('w-6', 'h-6', 'text-blue-500');
+    });
+
+    it('renders the correct path', () => {
+      const { container } = render(<SocialIcon icon={iconPath} />);
+      const svg = container.querySelector('svg');
+      const path = svg.querySelector('path');
+      expect(path).toHaveAttribute('d', iconPath);
+    });
+
+    it('does not render a path if icon prop is empty', () => {
+      const { container } = render(<SocialIcon icon="" />);
+      const svg = container.querySelector('svg');
+      expect(svg.querySelector('path')).toBeNull();
+    });
+
+    it('passes through additional props', () => {
+      render(<SocialIcon icon={iconPath} data-testid="social-icon" />);
+      expect(screen.getByTestId('social-icon')).toBeInTheDocument();
     });
   });
 });

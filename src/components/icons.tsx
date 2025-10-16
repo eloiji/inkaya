@@ -32,3 +32,20 @@ export const MenuIcon = (props: IconProps) => {
     </svg>
   );
 };
+
+type SocialIconProps = IconProps & { icon: string };
+
+export const SocialIcon = (props: SocialIconProps) => {
+  const { className, icon, ...restProps } = props;
+  return (
+    <svg
+      className={twMerge('w-6 h-6', className)}
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      {...restProps}
+    >
+      {icon ? <path d={icon} /> : null}
+    </svg>
+  );
+};
