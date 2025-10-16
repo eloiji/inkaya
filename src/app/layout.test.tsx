@@ -6,6 +6,10 @@ vi.mock('@/components/header', () => ({
   default: () => <header>Header</header>,
 }));
 
+vi.mock('@/components/footer', () => ({
+  default: () => <footer>Footer</footer>,
+}));
+
 vi.mock('next/font/google', () => ({
   Geist: () => ({
     variable: 'font-geist-sans',
@@ -26,5 +30,15 @@ describe('RootLayout', () => {
 
     expect(screen.getByRole('banner')).toHaveTextContent('Header');
     expect(screen.getByRole('main')).toHaveTextContent('Test Child');
+  });
+
+  it('renders the Footer component', () => {
+    render(
+      <RootLayout>
+        <main>Test Child</main>
+      </RootLayout>,
+      { container: document.body }
+    );
+    expect(screen.getByRole('contentinfo')).toHaveTextContent('Footer');
   });
 });

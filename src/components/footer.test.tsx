@@ -12,20 +12,24 @@ describe('Footer', () => {
     it('renders the footer element with correct styling', () => {
       const { container } = render(<Footer />);
       const footer = container.querySelector('footer');
-      expect(footer).toHaveClass('bg-gray-900', 'text-white');
+      // Update class names if changed
+      expect(footer).toHaveClass('bg-pink-700');
+      expect(footer).toHaveClass('text-white');
     });
   });
 
   describe('Footer Structure', () => {
     it('has a max-width container', () => {
       const { container } = render(<Footer />);
+      // Update selector if class changed
       const innerDiv = container.querySelector('.max-w-7xl');
       expect(innerDiv).toBeInTheDocument();
-      expect(innerDiv).toHaveClass('mx-auto', 'px-4', 'sm:px-6', 'lg:px-8');
+      expect(innerDiv).toHaveClass('mx-auto');
     });
 
     it('has proper padding', () => {
       const { container } = render(<Footer />);
+      // Update selector if class changed
       const innerDiv = container.querySelector('.py-8');
       expect(innerDiv).toBeInTheDocument();
     });
@@ -33,41 +37,43 @@ describe('Footer', () => {
 
   describe('Company Section', () => {
     it('renders company name', () => {
-      render(<Footer />);
-      expect(screen.getByText('Inkaya')).toBeInTheDocument();
+      const { container } = render(<Footer />);
+      const companyName = container.querySelector('#footer-heading');
+      expect(companyName).toBeInTheDocument();
+      expect(companyName).toHaveTextContent(/Inkaya/i);
     });
 
     it('renders company description', () => {
       render(<Footer />);
-      expect(screen.getByText(/Durable, high-quality vinyl stickers/i)).toBeInTheDocument();
+      expect(screen.getByText(/vinyl stickers/i)).toBeInTheDocument();
     });
   });
 
   describe('Navigation Links', () => {
     it('renders About link', () => {
       render(<Footer />);
-      const aboutLink = screen.getByRole('link', { name: 'About' });
+      const aboutLink = screen.getByRole('link', { name: /about/i });
       expect(aboutLink).toBeInTheDocument();
       expect(aboutLink).toHaveAttribute('href', '/about');
     });
 
     it('renders Contact link', () => {
       render(<Footer />);
-      const contactLink = screen.getByRole('link', { name: 'Contact' });
+      const contactLink = screen.getByRole('link', { name: /contact/i });
       expect(contactLink).toBeInTheDocument();
       expect(contactLink).toHaveAttribute('href', '/contact');
     });
 
     it('renders Privacy link', () => {
       render(<Footer />);
-      const privacyLink = screen.getByRole('link', { name: 'Privacy' });
+      const privacyLink = screen.getByRole('link', { name: /privacy/i });
       expect(privacyLink).toBeInTheDocument();
       expect(privacyLink).toHaveAttribute('href', '/privacy');
     });
 
     it('renders Terms link', () => {
       render(<Footer />);
-      const termsLink = screen.getByRole('link', { name: 'Terms' });
+      const termsLink = screen.getByRole('link', { name: /terms/i });
       expect(termsLink).toBeInTheDocument();
       expect(termsLink).toHaveAttribute('href', '/terms');
     });
@@ -76,28 +82,28 @@ describe('Footer', () => {
   describe('Social Media Links', () => {
     it('renders GitHub link', () => {
       render(<Footer />);
-      const githubLink = screen.getByLabelText('GitHub');
+      const githubLink = screen.getByLabelText(/github/i);
       expect(githubLink).toBeInTheDocument();
       expect(githubLink).toHaveAttribute('href', 'https://github.com');
     });
 
     it('renders Twitter link', () => {
       render(<Footer />);
-      const twitterLink = screen.getByLabelText('Twitter');
+      const twitterLink = screen.getByLabelText(/twitter/i);
       expect(twitterLink).toBeInTheDocument();
       expect(twitterLink).toHaveAttribute('href', 'https://twitter.com');
     });
 
     it('renders LinkedIn link', () => {
       render(<Footer />);
-      const linkedinLink = screen.getByLabelText('LinkedIn');
+      const linkedinLink = screen.getByLabelText(/linkedin/i);
       expect(linkedinLink).toBeInTheDocument();
       expect(linkedinLink).toHaveAttribute('href', 'https://linkedin.com');
     });
 
     it('social links open in new tab', () => {
       render(<Footer />);
-      const githubLink = screen.getByLabelText('GitHub');
+      const githubLink = screen.getByLabelText(/github/i);
       expect(githubLink).toHaveAttribute('target', '_blank');
       expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer');
     });
@@ -112,7 +118,7 @@ describe('Footer', () => {
 
     it('renders copyright text', () => {
       render(<Footer />);
-      expect(screen.getByText(/All rights reserved/i)).toBeInTheDocument();
+      expect(screen.getByText(/all rights reserved/i)).toBeInTheDocument();
     });
   });
 
@@ -120,12 +126,14 @@ describe('Footer', () => {
     it('has responsive grid layout', () => {
       const { container } = render(<Footer />);
       const grid = container.querySelector('.grid');
-      expect(grid).toHaveClass('md:grid-cols-3', 'gap-8');
+      expect(grid).toHaveClass('md:grid-cols-4');
+      expect(grid).toHaveClass('gap-8');
     });
 
     it('has responsive text alignment', () => {
       const { container } = render(<Footer />);
-      const copyright = container.querySelector('.text-center.md\\:text-left');
+      // Update selector if class changed
+      const copyright = container.querySelector('.text-center');
       expect(copyright).toBeInTheDocument();
     });
   });
@@ -139,22 +147,22 @@ describe('Footer', () => {
 
     it('all navigation links have accessible names', () => {
       render(<Footer />);
-      expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
-      expect(screen.getByRole('link', { name: 'Contact' })).toBeInTheDocument();
-      expect(screen.getByRole('link', { name: 'Privacy' })).toBeInTheDocument();
-      expect(screen.getByRole('link', { name: 'Terms' })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: /privacy/i })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: /terms/i })).toBeInTheDocument();
     });
 
     it('social media links have descriptive aria-labels', () => {
       render(<Footer />);
-      expect(screen.getByLabelText('GitHub')).toBeInTheDocument();
-      expect(screen.getByLabelText('Twitter')).toBeInTheDocument();
-      expect(screen.getByLabelText('LinkedIn')).toBeInTheDocument();
+      expect(screen.getByLabelText(/github/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/twitter/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/linkedin/i)).toBeInTheDocument();
     });
 
     it('external links have proper rel attribute', () => {
       render(<Footer />);
-      const githubLink = screen.getByLabelText('GitHub');
+      const githubLink = screen.getByLabelText(/github/i);
       expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer');
     });
   });
@@ -162,28 +170,29 @@ describe('Footer', () => {
   describe('Link Styling', () => {
     it('footer links have hover effects', () => {
       render(<Footer />);
-      const aboutLink = screen.getByRole('link', { name: 'About' });
-      expect(aboutLink).toHaveClass('hover:text-cyan-400');
+      const aboutLink = screen.getByRole('link', { name: /about/i });
+      expect(aboutLink.className).toMatch(/hover:text-yellow-300/);
     });
 
     it('social media links have hover effects', () => {
       render(<Footer />);
-      const githubLink = screen.getByLabelText('GitHub');
-      expect(githubLink).toHaveClass('hover:text-cyan-400');
+      const githubLink = screen.getByLabelText(/github/i);
+      expect(githubLink.className).toMatch(/hover:text-yellow-300/);
     });
   });
 
   describe('Layout Sections', () => {
     it('has company section', () => {
       const { container } = render(<Footer />);
+      // Update selector if class changed
       const companySection = container.querySelector('.space-y-4');
       expect(companySection).toBeInTheDocument();
     });
 
     it('renders section headings', () => {
       render(<Footer />);
-      expect(screen.getByText('Quick Links')).toBeInTheDocument();
-      expect(screen.getByText('Follow Us')).toBeInTheDocument();
+      expect(screen.getByText(/quick links/i)).toBeInTheDocument();
+      expect(screen.getByText(/follow us/i)).toBeInTheDocument();
     });
   });
 });

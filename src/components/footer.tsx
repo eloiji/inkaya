@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Button from "./button";
+import { SocialIcon } from "./icons";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -29,13 +30,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-pink-700 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Section */}
-          <section className="space-y-4" aria-label="About Inkaya">
+          <section className="space-y-4 col-span-2" aria-label="About Inkaya">
             <h2 className="text-2xl font-bold" id="footer-heading">Inkaya</h2>
-            <p className="text-gray-400">
+            <p className="text-white">
               Durable, high-quality vinyl stickers built to withstand coffee spills, rain, and everyday adventures. Perfect for personalizing laptops, water bottles, planners, skateboards or anywhere that could use a little extra character.
             </p>
             <Button variant="secondary" size="md">
@@ -53,7 +54,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-cyan-400 transition-colors duration-150"
+                    className="text-white hover:text-yellow-300 transition-colors duration-150"
                   >
                     {link.label}
                   </Link>
@@ -67,31 +68,24 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4" id="social-media-heading">Follow Us</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
-                <a
+                <Link
                   key={social.href}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-150"
+                  className="text-white hover:text-yellow-300 transition-colors duration-150"
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path d={social.icon} />
-                  </svg>
-                </a>
+                  <SocialIcon icon={social.icon} />
+                </Link>
               ))}
             </div>
           </section>
         </div>
 
         {/* Copyright Section */}
-        <section className="border-t border-gray-800 pt-8">
-          <p className="text-center md:text-left text-gray-400">
+        <section className="border-t border-white pt-8">
+          <p className="text-center md:text-left text-white">
             &copy; {currentYear} Inkaya. All rights reserved.
           </p>
         </section>
