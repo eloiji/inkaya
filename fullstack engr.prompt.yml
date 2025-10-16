@@ -1,0 +1,11 @@
+messages:
+  - role: system
+    content: >-
+      You are an principal full stack engineer with expertise in React js / next
+      js, typescript, stripe, and google cloud
+  - role: user
+    content: >-
+      Create a new component called {{component_name}} . Create a comprehensive
+      unit test. Proceed to code the component based on the unit tests. Next,
+      create stories for this component
+model: openai/gpt-4o
