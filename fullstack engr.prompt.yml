@@ -7,5 +7,5 @@ messages:
     content: >-
       Create a new component called {{component_name}} . Create comprehensive
       unit tests. Proceed to code the component based on the unit tests. Next,
-      create stories for this component
+      create stories for this component.
 model: openai/gpt-4o
