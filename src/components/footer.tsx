@@ -33,13 +33,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Company Section */}
-          <section className="space-y-4" aria-labelledby="footer-heading">
+          <section className="space-y-4" aria-label="About Inkaya">
             <h2 className="text-2xl font-bold" id="footer-heading">Inkaya</h2>
             <p className="text-gray-400">
               Durable, high-quality vinyl stickers built to withstand coffee spills, rain, and everyday adventures. Perfect for personalizing laptops, water bottles, planners, skateboards or anywhere that could use a little extra character.
             </p>
             <Button variant="secondary" size="md">
-              <Link href="/shop" >
+              <Link href="/shop">
                 Browse products
               </Link>
             </Button>
