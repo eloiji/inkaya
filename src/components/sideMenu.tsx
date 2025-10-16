@@ -17,7 +17,7 @@ export default function SideMenu({ links }: SideMenuProps) {
 
   return (
     <>
-      <Button variant="icon" onClick={toggleMenu} className="ml-2" role="button" aria-label="Toggle menu">
+      <Button variant="icon" onClick={toggleMenu} role="button" aria-label="Toggle menu">
         <MenuIcon />
       </Button>
       {/* a side menu that opens from the right side , aligning contents to the right */}
