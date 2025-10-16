@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="flex min-h-full flex-col items-center justify-center p-8 sm:p-24">
+    <section className="flex min-h-screen flex-col items-center justify-center p-8 sm:p-24">
       <div className="max-w-4xl">
         <h1 className="text-4xl font-bold mb-8 text-center">About Inkaya</h1>
         
