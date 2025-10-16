@@ -13,7 +13,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Button(props: ButtonProps) {
-  const { children, size, variant, ...rest } = props;
+  const { children, size, variant, className, ...rest } = props;
   // Base Classes: Applied to all buttons for universal styling
   const iconBaseClasses: string = [
     'font-semibold',
@@ -77,9 +77,10 @@ export default function Button(props: ButtonProps) {
   }
 
   // Combine all classes
-  const finalClasses: string = variant ==='icon' 
+  // If custom className is provided, use it to completely override defaults
+  const finalClasses: string = className || (variant ==='icon' 
     ? `${iconBaseClasses} ${sizeClasses} ${variantClasses}` 
-    : `${baseClasses} ${sizeClasses} ${variantClasses}`;
+    : `${baseClasses} ${sizeClasses} ${variantClasses}`);
 
   return <button {...rest} className={finalClasses}>{children}</button>;
 }
